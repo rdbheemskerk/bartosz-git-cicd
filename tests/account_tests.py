@@ -41,7 +41,9 @@ def test_overdraw_checking():
 
 
 def test_overdraw_savings():
-    account = Account('savings')
-    account.deposit(50)
-    account.withdraw(100)
-    with pytest.raises(ValueError)
+    with pytest.raises(ValueError):
+        account = Account('savings')
+        account.deposit(50)
+        account.withdraw(100)
+    
+    
