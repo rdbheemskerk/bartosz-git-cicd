@@ -10,7 +10,7 @@ on:
 jobs:
   run-the-tests:
 
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:
@@ -30,7 +30,7 @@ jobs:
             python-version: ${{ matrix.python-version }}
         
       - name: Display Python version
-        run: python -c "import sys; print(sys.version)"
+        run: python --version
 
       - name: Install dependencies
         run: pip install -r requirements.txt
@@ -39,7 +39,7 @@ jobs:
         run: pytest --junit-xml=test-results.xml ./tests/account_tests.py
       
       - name: Publish Test Results
-        uses: EnricoMi/publish-unit-test-result-action/macos@v2
+        uses: EnricoMi/publish-unit-test-result-action@v2
         if: (!cancelled())
         with:
           files:  |
